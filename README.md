@@ -10,7 +10,7 @@ All releases on master are tagged corresponding to the cagebreak release and sig
 For every release we provide a tarball containing at least `.SRCINFO` and `PKGBUILD`
 and a corresponing signature as release assets.
 
-We will soon provide a PKGBUILD in the [AUR](aur.archlinux.org).
+We provide a PKGBUILD in the [AUR](aur.archlinux.org).
 
 ## Signing Keys
 
