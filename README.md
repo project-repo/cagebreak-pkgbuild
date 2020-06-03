@@ -1,6 +1,3 @@
----
-title: 'README'
----
 # Cagebreak Archlinux Package
 
 This repository provides a PKGBUILD for [cagebreak](https://github.com/project-repo/cagebreak).
