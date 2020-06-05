@@ -11,6 +11,7 @@ makedepends=('meson' 'ninja' 'pandoc')
 optdepends=('wl-clipboard: clipboard support'
             'xorg-server-xwayland: x application support')
 options=('!buildflags')
+conflicts=('cagebreak-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/project-repo/cagebreak/releases/download/$pkgver/release_$pkgver.tar.gz")
 sha512sums=('1a67b8c8effdeca09ff50bf90a82c22dd826d10db54caa8e122bdaf01f4cc1524e53fd32cdca85a732e9916f162dc57a155f11a1ed1b7ffc4453f31ed0cfd4b4')
 build() {

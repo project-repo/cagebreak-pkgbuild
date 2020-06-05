@@ -10,6 +10,7 @@ depends=('wayland' 'libxkbcommon' 'wlroots' 'pango')
 optdepends=('wl-clipboard: clipboard support'
             'xorg-server-xwayland: x application support')
 source=("cagebreak-bin.tar.gz")
+conflicts=('cagebreak')
 sha512sums=('SKIP')
 package() {
 	cd "$pkgname"
