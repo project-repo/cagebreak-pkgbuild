@@ -4,8 +4,8 @@ This repository provides a PKGBUILDs for [cagebreak](https://github.com/project-
 
 All releases on master are tagged corresponding to the cagebreak release and signed.
 
-For every release we provide tarballs containing at least `.SRCINFO` and `PKGBUILD`
-and a corresponing signature for the PKGBUILDs.
+For every release we provide a tarball containing at least `.SRCINFO` and `PKGBUILD`
+and a corresponing signature.
 
 We also provide these PKGBUILDs in the [AUR](aur.archlinux.org).
 
