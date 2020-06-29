@@ -26,3 +26,18 @@ The following keys are valid:
 
 Note that the key is signed by some signing keys of the cagebreak project.
 
+## Release Automation
+
+This is the minimally required commands for creating a release and generating
+the PKGBUILDs for the [AUR](aur.archlinux.org).
+
+  * [ ] git checkout development
+  * [ ] git pull origin development
+  * [ ] make version=release_tag release=pkgbuild_release gpgid=valid_gpg_id all
+  * [ ] git commit
+  * [ ] git checkout master
+  * [ ] git merge --squash development
+  * [ ] git tag -u valid_gpg_id release_tag HEAD
+  * [ ] git tag -v release_tag
+  * [ ] git push --tags origin master
+  * [ ] upload artefacts
