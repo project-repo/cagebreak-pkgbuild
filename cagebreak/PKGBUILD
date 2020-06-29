@@ -10,7 +10,7 @@ depends=('wayland' 'libxkbcommon' 'wlroots' 'pango')
 makedepends=('meson' 'ninja' 'pandoc')
 optdepends=('wl-clipboard: clipboard support'
             'xorg-server-xwayland: x application support')
-options=('!buildflags')
+options=('!buildflags' '!strip')
 conflicts=('cagebreak-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/project-repo/cagebreak/releases/download/$pkgver/release_$pkgver.tar.gz")
 sha512sums=('5217b689ea2565a75a99007fbcd8e8064a39cf41cadc7e64d6e005dd1487ca944a55b1594482820f7147e1560c090cd4cb134b0da46014f1fc5aee1a8c1d6f36')
