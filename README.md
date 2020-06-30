@@ -33,8 +33,10 @@ the PKGBUILDs for the [AUR](aur.archlinux.org).
 
   * [ ] git checkout development
   * [ ] git pull origin development
+  * [ ] make clean
   * [ ] make version=release_tag release=pkgbuild_release gpgid=valid_gpg_id all
   * [ ] git commit
+  * [ ] git push origin development
   * [ ] git checkout master
   * [ ] git merge --squash development
   * [ ] git tag -u valid_gpg_id release_tag HEAD

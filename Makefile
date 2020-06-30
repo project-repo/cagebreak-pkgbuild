@@ -73,6 +73,47 @@ upstream:
 	git clone --depth=1 https://github.com/project-repo/cagebreak upstream/cagebreak-git
 	git -C upstream/cagebreak-git tag -v $(version)
 
+check: all
+	grep -Fxq "pkgver=$(version)" cagebreak/PKGBUILD
+	grep -Fxq "pkgrel=$(release)" cagebreak/PKGBUILD
+	[[ cagebreak/.SRCINFO -nt cagebreak/PKGBUILD ]]
+	grep -Fqx "	pkgver = $(version)" cagebreak/.SRCINFO
+	grep -Fqx "	pkgrel = $(release)" cagebreak/.SRCINFO
+	grep -Fxq "pkgver=$(version)" cagebreak-bin/PKGBUILD
+	grep -Fxq "pkgrel=$(release)" cagebreak-bin/PKGBUILD
+	[[ cagebreak-bin/.SRCINFO -nt cagebreak-bin/PKGBUILD ]]
+	grep -Fqx "	pkgver = $(version)" cagebreak-bin/.SRCINFO
+	grep -Fqx "	pkgrel = $(release)" cagebreak-bin/.SRCINFO
+	[[ $$(wc -l output/manifest) = "3 output/manifest" ]]
+	gpg --verify output/release_$(version).tar.gz.sig output/release_$(version).tar.gz
+	gpg --verify output/release_$(version).tar.gz.sig output/release_$(version).tar.gz 2>&1 >/dev/null | grep -Fxq "gpg:                using RSA key $(gpgid)"
+	gpg --verify output/release_$(version).tar.gz.sig output/release_$(version).tar.gz 2>&1 >/dev/null | grep -Fxq "gpg: Good signature from \"project-repo <archlinux-aur@project-repo.co>\" [ultimate]"
+	[[ $$(tar --list -f output/release_$(version).tar.gz | wc -l) = "7" ]]
+	[[ $$(tar --list -f output/release_$(version).tar.gz | head -1) = "cagebreak-pkgbuild/" ]]
+	[[ $$(tar --list -f output/release_$(version).tar.gz | head -2 | tail -1) = "cagebreak-pkgbuild/cagebreak/" ]]
+	[[ $$(tar --list -f output/release_$(version).tar.gz | head -3 | tail -1) = "cagebreak-pkgbuild/cagebreak/.SRCINFO" ]]
+	[[ $$(tar --list -f output/release_$(version).tar.gz | head -4 | tail -1) = "cagebreak-pkgbuild/cagebreak/PKGBUILD" ]]
+	[[ $$(tar --list -f output/release_$(version).tar.gz | head -5 | tail -1) = "cagebreak-pkgbuild/cagebreak-bin/" ]]
+	[[ $$(tar --list -f output/release_$(version).tar.gz | head -6 | tail -1) = "cagebreak-pkgbuild/cagebreak-bin/.SRCINFO" ]]
+	[[ $$(tar --list -f output/release_$(version).tar.gz | head -7 | tail -1) = "cagebreak-pkgbuild/cagebreak-bin/PKGBUILD" ]]
+	[[ $$(tar -xOf output/release_$(version).tar.gz cagebreak-pkgbuild/cagebreak/PKGBUILD | sha512sum) = $$(cat cagebreak/PKGBUILD | sha512sum) ]]
+	[[ $$(tar -xOf output/release_$(version).tar.gz cagebreak-pkgbuild/cagebreak/.SRCINFO | sha512sum) = $$(cat cagebreak/.SRCINFO | sha512sum) ]]
+	[[ $$(tar -xOf output/release_$(version).tar.gz cagebreak-pkgbuild/cagebreak-bin/PKGBUILD | sha512sum) = $$(cat cagebreak-bin/PKGBUILD | sha512sum) ]]
+	[[ $$(tar -xOf output/release_$(version).tar.gz cagebreak-pkgbuild/cagebreak-bin/.SRCINFO | sha512sum) = $$(cat cagebreak-bin/.SRCINFO | sha512sum) ]]
+	gpg --verify output/release_bin_$(version).tar.gz.sig output/release_bin_$(version).tar.gz
+	gpg --verify output/release_bin_$(version).tar.gz.sig output/release_bin_$(version).tar.gz 2>&1 >/dev/null | grep -Fxq "gpg:                using RSA key $(gpgid)"
+	gpg --verify output/release_bin_$(version).tar.gz.sig output/release_bin_$(version).tar.gz 2>&1 >/dev/null | grep -Fxq "gpg: Good signature from \"project-repo <archlinux-aur@project-repo.co>\" [ultimate]"
+	[[ $$(tar --list -f output/release_bin_$(version).tar.gz | wc -l) = "5" ]]
+	[[ $$(tar --list -f output/release_bin_$(version).tar.gz | head -1) = "cagebreak-bin/" ]]
+	[[ $$(tar --list -f output/release_bin_$(version).tar.gz | head -2 | tail -1) = "cagebreak-bin/LICENSE" ]]
+	[[ $$(tar --list -f output/release_bin_$(version).tar.gz | head -3 | tail -1) = "cagebreak-bin/cagebreak" ]]
+	[[ $$(tar --list -f output/release_bin_$(version).tar.gz | head -4 | tail -1) = "cagebreak-bin/cagebreak-config.5" ]]
+	[[ $$(tar --list -f output/release_bin_$(version).tar.gz | head -5 | tail -1) = "cagebreak-bin/cagebreak.1" ]]
+	[[ $$(tar -xOf output/release_bin_$(version).tar.gz cagebreak-bin/LICENSE | sha512sum) = $$(cat upstream/cagebreak/LICENSE | sha512sum) ]]
+	[[ $$(tar -xOf output/release_bin_$(version).tar.gz cagebreak-bin/cagebreak | sha512sum) = $$(cat upstream/cagebreak/build/cagebreak | sha512sum) ]]
+	[[ $$(tar -xOf output/release_bin_$(version).tar.gz cagebreak-bin/cagebreak-config.5 | sha512sum) = $$(cat upstream/cagebreak/build/cagebreak-config.5 | sha512sum) ]]
+	[[ $$(tar -xOf output/release_bin_$(version).tar.gz cagebreak-bin/cagebreak.1 | sha512sum) = $$(cat upstream/cagebreak/build/cagebreak.1 | sha512sum) ]]
+
 clean:
 	rm -rf upstream
 	rm -rf output
