@@ -15,7 +15,7 @@ This pkgbuild is provided for those who want a full build from source.
 
 ## Cagebreak-bin
 
-This pkgbuild just extracts a precompiled binary and the man pages and therefore
+This pkgbuild simply extracts a precompiled binary and the man pages and therefore
 requires no build dependencies (runtime dependencies are still required).
 
 ## Signing Keys
@@ -24,11 +24,11 @@ The following keys are valid:
 
   * A9C386EFBEB0819C5523E6AB2AD89C95DEA1AE85
 
-Note that the key is signed by some signing keys of the cagebreak project.
+Note that the key is signed by at least one signing key of the cagebreak project.
 
 ## Release Automation
 
-This is the minimally required commands for creating a release and generating
+These are the minimally required commands for creating a release and generating
 the PKGBUILDs for the [AUR](aur.archlinux.org).
 
   * [ ] git checkout development
