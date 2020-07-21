@@ -57,10 +57,11 @@ release_bin_$(version).tar.gz.sig: release_bin_$(version).tar.gz
 	gpg --detach-sig -u $(gpgid) output/release_bin_$(version).tar.gz
 
 output:
-	mkdir output
+	mkdir -p output
 
 upstream:
-	mkdir upstream
+	mkdir -p upstream
+	rm -rf upstream/*
 	wget "https://github.com/project-repo/cagebreak/releases/download/$(version)/release_$(version).tar.gz"
 	mv "release_$(version).tar.gz" upstream
 	wget "https://github.com/project-repo/cagebreak/releases/download/$(version)/release_$(version).tar.gz.sig"
@@ -74,6 +75,7 @@ upstream:
 	git -C upstream/cagebreak-git tag -v $(version)
 
 check: all
+	[[ $$(vercmp $(version) $$(git tag | tail -1)) -eq 1 ]]
 	grep -Fxq "pkgver=$(version)" cagebreak/PKGBUILD
 	grep -Fxq "pkgrel=$(release)" cagebreak/PKGBUILD
 	[[ cagebreak/.SRCINFO -nt cagebreak/PKGBUILD ]]
