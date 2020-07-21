@@ -19,6 +19,10 @@ build() {
 	meson build --buildtype=release -Dxwayland=true
 	ninja -C build
 }
+check() {
+	cd "$pkgname"
+	gpg --verify signatures/cagebreak.sig build/cagebreak
+}
 package() {
 	cd "$pkgname"
 	mkdir -p "$pkgdir/usr/bin/"
