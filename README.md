@@ -42,4 +42,7 @@ the PKGBUILDs for the [AUR](aur.archlinux.org).
   * [ ] git tag -u valid_gpg_id release_tag HEAD
   * [ ] git tag -v release_tag
   * [ ] git push --tags origin master
+  * [ ] git checkout development
+  * [ ] git merge master
+  * [ ] git push --tags origin development
   * [ ] upload artefacts
