@@ -8,7 +8,7 @@ url='https://github.com/project-repo/cagebreak'
 license=('MIT')
 depends=('wayland' 'libxkbcommon' 'wlroots' 'pango')
 optdepends=('wl-clipboard: clipboard support'
-            'xorg-server-xwayland: x application support')
+            'xorg-xwayland: x application support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/project-repo/cagebreak-pkgbuild/releases/download/$pkgver/release_bin_$pkgver.tar.gz")
 options=('!buildflags' '!strip')
 conflicts=('cagebreak')

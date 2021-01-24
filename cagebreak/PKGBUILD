@@ -9,7 +9,7 @@ license=('MIT')
 depends=('wayland' 'libxkbcommon' 'wlroots' 'pango')
 makedepends=('meson' 'ninja' 'pandoc' 'wayland-protocols')
 optdepends=('wl-clipboard: clipboard support'
-            'xorg-server-xwayland: x application support')
+            'xorg-xwayland: x application support')
 options=('!buildflags' '!strip')
 conflicts=('cagebreak-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/project-repo/cagebreak/releases/download/$pkgver/release_$pkgver.tar.gz")
