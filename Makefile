@@ -68,7 +68,7 @@ upstream:
 	mv "release_$(version).tar.gz.sig" upstream
 	gpg --verify "upstream/release_$(version).tar.gz.sig" "upstream/release_$(version).tar.gz"
 	cd upstream ; tar -xf release_$(version).tar.gz
-	cd upstream/cagebreak ; meson build -Dxwayland=true --buildtype=release
+	cd upstream/cagebreak ; meson build -Dxwayland=true -Dman-pages=true --buildtype=release
 	ninja -C upstream/cagebreak/build
 	gpg --verify upstream/cagebreak/signatures/cagebreak.sig upstream/cagebreak/build/cagebreak
 	git clone --depth=1 https://github.com/project-repo/cagebreak upstream/cagebreak-git
