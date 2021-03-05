@@ -1,6 +1,6 @@
 # Cagebreak Archlinux Package
 
-This repository provides a PKGBUILDs for [cagebreak](https://github.com/project-repo/cagebreak).
+This repository provides PKGBUILDs for [cagebreak](https://github.com/project-repo/cagebreak).
 
 All releases on master are tagged corresponding to the cagebreak release and signed.
 
