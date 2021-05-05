@@ -23,6 +23,7 @@ requires no build dependencies (runtime dependencies are still required).
 The following keys are valid:
 
   * A9C386EFBEB0819C5523E6AB2AD89C95DEA1AE85
+  * FC9B267D2C4AE25E139BADF5B093C3C73E9053A1
 
 Note that the key is signed by at least one signing key of the cagebreak project.
 
