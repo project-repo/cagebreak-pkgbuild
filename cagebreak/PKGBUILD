@@ -7,7 +7,7 @@ arch=('x86_64')
 url='https://github.com/project-repo/cagebreak'
 license=('MIT')
 depends=('wayland' 'libxkbcommon' 'wlroots<0.14.0' 'pango')
-makedepends=('meson' 'ninja' 'pandoc' 'wayland-protocols')
+makedepends=('meson' 'ninja' 'scdoc' 'wayland-protocols')
 optdepends=('wl-clipboard: clipboard support'
             'xorg-xwayland: x application support')
 options=('!buildflags' '!strip')
