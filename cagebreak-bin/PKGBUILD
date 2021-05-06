@@ -14,7 +14,7 @@ options=('!buildflags' '!strip')
 conflicts=('cagebreak')
 sha512sums=('8fcbf0989b1380575d22386fa1432169e8280977b10c878b65b551350fdd6f2c6e99e4c1b4a9941daf33db533c1bd35e49593ce0e3a493f5211d0d1af7739c19')
 package() {
-	cd "$pkgname"
+	cd release-artefacts_$pkgver
 	mkdir -p "$pkgdir/usr/bin/"
 	cp 'cagebreak' "$pkgdir/usr/bin/"
 	mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
