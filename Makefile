@@ -54,11 +54,11 @@ upstream:
 	mv "release_$(version).tar.gz.sig" upstream
 	gpg --verify "upstream/release_$(version).tar.gz.sig" "upstream/release_$(version).tar.gz"
 ## Download artefacts
-	wget "https://github.com/project-repo/cagebreak/releases/download/$(version)/release_$(version).tar.gz"
-	mv "release_$(version).tar.gz" upstream
-	wget "https://github.com/project-repo/cagebreak/releases/download/$(version)/release_$(version).tar.gz.sig"
-	mv "release_$(version).tar.gz.sig" upstream
-	gpg --verify "upstream/release_$(version).tar.gz.sig" "upstream/release_$(version).tar.gz"
+	wget "https://github.com/project-repo/cagebreak/releases/download/$(version)/release-artefacts_$(version).tar.gz"
+	mv "release-artefacts_$(version).tar.gz" upstream
+	wget "https://github.com/project-repo/cagebreak/releases/download/$(version)/release-artefacts_$(version).tar.gz.sig"
+	mv "release-artefacts_$(version).tar.gz.sig" upstream
+	gpg --verify "upstream/release-artefacts_$(version).tar.gz.sig" "upstream/release-artefacts_$(version).tar.gz"
 ## Verify tag
 	git clone --depth=1 https://github.com/project-repo/cagebreak upstream/cagebreak-git
 	git -C upstream/cagebreak-git tag -v $(version)
