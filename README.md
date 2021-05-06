@@ -25,25 +25,27 @@ The following keys are valid:
   * A9C386EFBEB0819C5523E6AB2AD89C95DEA1AE85
   * FC9B267D2C4AE25E139BADF5B093C3C73E9053A1
 
-Note that the key is signed by at least one signing key of the cagebreak project.
+Note that the keys are signed by at least one signing key of the cagebreak project.
 
 ## Release Automation
 
 These are the minimally required commands for creating a release and generating
 the PKGBUILDs for the [AUR](aur.archlinux.org).
 
-  * [ ] git checkout development
-  * [ ] git pull origin development
-  * [ ] make clean
-  * [ ] make version=release_tag release=pkgbuild_release gpgid=valid_gpg_id all
-  * [ ] git commit
-  * [ ] git push origin development
-  * [ ] git checkout master
-  * [ ] git merge --squash development
-  * [ ] git tag -u valid_gpg_id release_tag HEAD
-  * [ ] git tag -v release_tag
-  * [ ] git push --tags origin master
-  * [ ] git checkout development
-  * [ ] git merge master
-  * [ ] git push --tags origin development
+  * [ ] `git checkout development`
+  * [ ] `git pull origin development`
+  * [ ] `make clean`
+  * [ ] `make version=release_tag release=pkgbuild_release gpgid=valid_gpg_id check`
+  * [ ] `git commit`
+  * [ ] `git push origin development`
+  * [ ] `git checkout master`
+  * [ ] `git merge --squash development`
+  * [ ] `git commit` and insert "Release version"
+  * [ ] `git tag -u valid_gpg_id release_tag HEAD`
+  * [ ] `git tag -v release_tag`
+  * [ ] `git push --tags origin master`
+  * [ ] `git checkout development`
+  * [ ] `git merge master`
+  * [ ] `git push --tags origin development`
   * [ ] upload artefacts
+  * [ ] `make clean`
