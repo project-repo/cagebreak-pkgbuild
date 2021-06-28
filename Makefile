@@ -17,11 +17,13 @@ release_$(version).tar.gz: PKGBUILDs output upstream
 release_$(version).tar.gz.sig: release_$(version).tar.gz
 	gpg --detach-sig -u $(gpgid) output/release_$(version).tar.gz
 
-PKGBUILDs: PKGBUILD-cagebreak PKGBUILD-cagebreak-bin
+PKGBUILDs: PKGBUILD-cagebreak PKGBUILD-cagebreak-bin PKGBUILD-cagebreak-arm
 
 PKGBUILD-cagebreak: cagebreak/PKGBUILD cagebreak/.SRCINFO
 
 PKGBUILD-cagebreak-bin: cagebreak-bin/PKGBUILD cagebreak-bin/.SRCINFO
+
+PKGBUILD-cagebreak-arm: cagebreak-arm/PKGBUILD cagebreak-arm/.SRCINFO
 
 cagebreak/PKGBUILD: upstream
 	cd cagebreak ; sed -i "s/pkgver=.*/pkgver=$(version)/g" PKGBUILD
@@ -38,6 +40,14 @@ cagebreak-bin/PKGBUILD: upstream
 
 cagebreak-bin/.SRCINFO: cagebreak-bin/PKGBUILD
 	cd cagebreak-bin ; makepkg --printsrcinfo > .SRCINFO
+
+cagebreak-arm/PKGBUILD: upstream
+	cd cagebreak-arm ; sed -i "s/pkgver=.*/pkgver=$(version)/g" PKGBUILD
+	cd cagebreak-arm ; sed -i "s/pkgrel=.*/pkgrel=$(release)/g" PKGBUILD
+	hash=$$(sha512sum upstream/release_$(version).tar.gz | cut -d " " -f1) ; cd cagebreak-arm ; sed -i "s/sha512sums=.*/sha512sums=\(\'$$hash\'\)/g" PKGBUILD
+
+cagebreak-arm/.SRCINFO: cagebreak-arm/PKGBUILD
+	cd cagebreak-arm ; makepkg --printsrcinfo > .SRCINFO
 
 output:
 	mkdir -p output
