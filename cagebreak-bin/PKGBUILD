@@ -6,7 +6,7 @@ pkgdesc='Tiling wayland compositor based on cage inspired by ratpoison'
 arch=('x86_64')
 url='https://github.com/project-repo/cagebreak'
 license=('MIT')
-depends=('wayland' 'libxkbcommon' 'wlroots<0.14.0' 'pango')
+depends=('wayland' 'libxkbcommon' 'wlroots<0.15.0' 'pango')
 optdepends=('wl-clipboard: clipboard support'
             'xorg-xwayland: x application support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/project-repo/cagebreak/releases/download/$pkgver/release-artefacts_$pkgver.tar.gz")
