@@ -18,6 +18,10 @@ This pkgbuild is provided for those who want a full build from source.
 This pkgbuild simply extracts a precompiled binary and the man pages and therefore
 requires no build dependencies (runtime dependencies are still required).
 
+## cagebreak-arm
+
+This aarch64 pkgbuild is not officially supported and not in the AUR.
+
 ## Signing Keys
 
 The following keys are valid:
