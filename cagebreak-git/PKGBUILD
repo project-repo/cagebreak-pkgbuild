@@ -1,0 +1,36 @@
+# Maintainer: project-repo <archlinux-aur@project-repo.co>
+_name=cagebreak
+pkgname=$_name-git
+pkgver=1.9.1.r0.g728c2e4
+pkgrel=1
+pkgdesc='Tiling wayland compositor based on cage inspired by ratpoison'
+arch=('x86_64')
+url='https://github.com/project-repo/cagebreak'
+license=('MIT')
+depends=('wayland' 'libxkbcommon' 'wlroots' 'pango')
+makedepends=('meson' 'ninja' 'scdoc' 'wayland-protocols')
+optdepends=('wl-clipboard: clipboard support'
+            'xorg-xwayland: x application support')
+options=('!buildflags' '!strip')
+conflicts=('cagebreak' 'cagebreak-bin')
+provides=('cagebreak')
+source=("git+https://github.com/project-repo/cagebreak")
+sha512sums=('SKIP')
+pkgver() {
+	cd "$_name"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+build() {
+	cd "$_name"
+	git checkout development
+	meson build --buildtype=release -Dman-pages=true -Dxwayland=true
+	ninja -C build
+}
+package() {
+	cd "$_name"
+	install -Dt "$pkgdir/usr/bin/" 'build/cagebreak' 
+	install -Dt "$pkgdir/usr/share/licenses/$_name/" 'LICENSE' 
+	for f in 'build/cagebreak.1' 'build/cagebreak-config.5' 'build/cagebreak-socket.7'; do
+		install -Dt "$pkgdir/usr/share/man/man${f:(-1)}/" "$f"
+	done
+}
