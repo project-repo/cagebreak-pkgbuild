@@ -20,7 +20,9 @@ package() {
 	mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
 	mkdir -p "$pkgdir/usr/share/man/man1/"
 	mkdir -p "$pkgdir/usr/share/man/man5/"
+	mkdir -p "$pkgdir/usr/share/man/man7/"
 	cp 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/"
 	cp 'cagebreak.1' "$pkgdir/usr/share/man/man1/"
 	cp 'cagebreak-config.5' "$pkgdir/usr/share/man/man5/"
+	cp 'cagebreak-socket.7' "$pkgdir/usr/share/man/man7/"
 }
