@@ -45,6 +45,7 @@ the PKGBUILDs for the [AUR](aur.archlinux.org).
   * [ ] `git commit`
   * [ ] `git push origin development`
   * [ ] `git checkout master`
+  * [ ] `git pull --tags origin master`
   * [ ] `git merge --squash development`
   * [ ] `git commit` and insert "Release version"
   * [ ] `git tag -u valid_gpg_id release_tag HEAD`
