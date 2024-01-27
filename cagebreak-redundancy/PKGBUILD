@@ -12,7 +12,7 @@ optdepends=('wl-clipboard: clipboard support'
             'xorg-xwayland: x application support')
 options=('!buildflags' '!strip')
 conflicts=('cagebreak-bin')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/project-repo/cagebreak/releases/download/$pkgver/release_$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://cagebreak.project-repo.co/release-artefacts/release_$pkgver.tar.gz")
 sha512sums=('55df61904cfdae6dc907eb7839c5e3c8d717304fa4380e689629c1ba892b4cbfd67968f089e784585e264481667f9c1256a6f7e3d05b5f094e9717dde8259de6')
 build() {
 	meson setup --prefix=/usr --buildtype=release -Dman-pages=true -Dxwayland=true $pkgname build
