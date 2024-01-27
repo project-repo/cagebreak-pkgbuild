@@ -108,7 +108,7 @@ check: all
 	grep -Fxq "pkgver=$(version)" cagebreak-redundancy/PKGBUILD
 	grep -Fxq "pkgrel=$(release)" cagebreak-redundancy/PKGBUILD
 	[[ cagebreak/.SRCINFO -nt cagebreak/PKGBUILD ]]
-	[[ cagebreak/.SRCINFO -nt cagebreak-redundancy/PKGBUILD ]]
+	[[ cagebreak-redundancy/.SRCINFO -nt cagebreak-redundancy/PKGBUILD ]]
 	grep -Fqx "	pkgver = $(version)" cagebreak/.SRCINFO
 	grep -Fqx "	pkgrel = $(release)" cagebreak/.SRCINFO
 	grep -Fqx "	pkgver = $(version)" cagebreak-redundancy/.SRCINFO
@@ -118,13 +118,13 @@ check: all
 	grep -Fxq "pkgver=$(version)" cagebreak-bin-redundancy/PKGBUILD
 	grep -Fxq "pkgrel=$(release)" cagebreak-bin-redundancy/PKGBUILD
 	[[ cagebreak-bin/.SRCINFO -nt cagebreak-bin/PKGBUILD ]]
-	[[ cagebreak-bin/.SRCINFO -nt cagebreak-bin-redundancy/PKGBUILD ]]
+	[[ cagebreak-bin-redundancy/.SRCINFO -nt cagebreak-bin-redundancy/PKGBUILD ]]
 	grep -Fqx "	pkgver = $(version)" cagebreak-bin/.SRCINFO
 	grep -Fqx "	pkgrel = $(release)" cagebreak-bin/.SRCINFO
 	gpg --verify output/release_$(version).tar.gz.sig output/release_$(version).tar.gz
 	gpg --verify output/release_$(version).tar.gz.sig output/release_$(version).tar.gz 2>&1 >/dev/null | grep -Fxq "gpg:                using RSA key $(gpgid)"
 	gpg --verify output/release_$(version).tar.gz.sig output/release_$(version).tar.gz 2>&1 >/dev/null | grep -Fxq "gpg: Good signature from \"project-repo <archlinux-aur@project-repo.co>\" [ultimate]"
-	[[ $$(tar --list -f output/release_$(version).tar.gz | wc -l) = "9" ]]
+	[[ $$(tar --list -f output/release_$(version).tar.gz | wc -l) = "13" ]]
 	[[ $$(tar -xOf output/release_$(version).tar.gz cagebreak-pkgbuild/cagebreak/PKGBUILD | sha512sum) = $$(cat cagebreak/PKGBUILD | sha512sum) ]]
 	[[ $$(tar -xOf output/release_$(version).tar.gz cagebreak-pkgbuild/cagebreak/.SRCINFO | sha512sum) = $$(cat cagebreak/.SRCINFO | sha512sum) ]]
 	[[ $$(tar -xOf output/release_$(version).tar.gz cagebreak-pkgbuild/cagebreak-redundancy/PKGBUILD | sha512sum) = $$(cat cagebreak-redundancy/PKGBUILD | sha512sum) ]]
