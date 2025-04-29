@@ -36,6 +36,7 @@ The following keys are valid:
   * 7857F021E8808412DD6C2F8849B3AD1FFEA4AE42
   * EAB01D6E2206E0FE012F68EBA001D296F543C4EC
   * E7D5B3589BFCDDEA19F3CA0FC54665860539B5B2
+  * 28B40D34E71E1CE6D7254EBCE1062B73F766C8AF
 
 Note that the keys are signed by at least one signing key of the cagebreak project.
 
@@ -62,3 +63,4 @@ the PKGBUILDs for the [AUR](aur.archlinux.org).
   * [ ] `git push --tags origin development`
   * [ ] upload artefacts
   * [ ] `make clean`
+
