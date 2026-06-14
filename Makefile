@@ -122,7 +122,7 @@ check: all
 	grep -Fqx "	pkgver = $(version)" cagebreak-bin/.SRCINFO
 	grep -Fqx "	pkgrel = $(release)" cagebreak-bin/.SRCINFO
 	gpg --verify output/release_$(version).tar.gz.sig output/release_$(version).tar.gz
-	gpg --verify output/release_$(version).tar.gz.sig output/release_$(version).tar.gz 2>&1 >/dev/null | grep -Fxq "gpg:                using RSA key $(gpgid)"
+	gpg --verify output/release_$(version).tar.gz.sig output/release_$(version).tar.gz 2>&1 >/dev/null | grep -Eq "^gpg:                using [A-Z0-9]+ key $(gpgid)$$"
 	gpg --verify output/release_$(version).tar.gz.sig output/release_$(version).tar.gz 2>&1 >/dev/null | grep -Fxq "gpg: Good signature from \"project-repo <archlinux-aur@project-repo.co>\" [ultimate]"
 	[[ $$(tar --list -f output/release_$(version).tar.gz | wc -l) = "13" ]]
 	[[ $$(tar -xOf output/release_$(version).tar.gz cagebreak-pkgbuild/cagebreak/PKGBUILD | sha512sum) = $$(cat cagebreak/PKGBUILD | sha512sum) ]]
@@ -137,4 +137,3 @@ check: all
 clean:
 	rm -rf upstream
 	rm -rf output
-
